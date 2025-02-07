@@ -17,3 +17,6 @@
 .idea/
 coverage.txt
 k8s-image-swapper
+# Added by goreleaser init:
+dist/
+.envrc
