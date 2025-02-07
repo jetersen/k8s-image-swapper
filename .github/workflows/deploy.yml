@@ -12,6 +12,10 @@ on:
         description: 'Branch, SHA or Tag to release'
         required: false
         type: string
+      snapshot:
+        description: 'Snapshot release'
+        required: false
+        type: boolean
 
 permissions:
   contents: write
@@ -65,6 +69,6 @@ jobs:
       uses: goreleaser/goreleaser-action@v6.1.0
       with:
         version: latest
-        args: release --clean
+        args: release --clean ${{ inputs.snapshot && '--snapshot' || '' }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
